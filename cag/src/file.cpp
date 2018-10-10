@@ -45,7 +45,7 @@ string File::Read()
         return r;
     }
     else
-        return "Error";
+        throw file_exc_nofile();
 }
 
 bool File::Write(string to_file)
@@ -55,4 +55,9 @@ bool File::Write(string to_file)
         this->file << to_file << endl;
         this->Close();
     }
+}
+
+const char* file_exc_nofile::what() const throw()
+{
+    return "File is not exists";
 }

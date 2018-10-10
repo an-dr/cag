@@ -12,7 +12,7 @@ int main()
 
     string path = "config.ini";
     File a(path);
-    a.Write("1234\n321\nqwerty");
+//    a.Write("1234\n321\nqwerty");
     cout<<a.Read()<<endl;
     return 0;
 }

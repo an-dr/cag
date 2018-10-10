@@ -16,7 +16,7 @@ class File
 public:
     explicit File(string path = "");
     string Read();
-    bool Create();
+//    bool Create(); todo: add a Create method
     bool Write(string to_file);
 private:
     string file_path;
@@ -24,6 +24,11 @@ private:
     bool Open(ios::openmode mode);
     bool Close();
 
+};
+
+class file_exc_nofile: public exception
+{
+    const char* what() const noexcept override;
 };
 
 #endif //CAG_FILE_H
