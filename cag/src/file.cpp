@@ -1,3 +1,5 @@
+#include <utility>
+
 //
 // Created by Andrey Gramakov on 09/10/2018.
 //
@@ -6,7 +8,7 @@
 
 File::File(string path)
 {
-    this->file_path = path;
+    this->file_path = move(path);
 }
 
 bool File::Open(ios::openmode mode)
@@ -25,5 +27,32 @@ bool File::Close()
     else
     {
         return false;
+    }
+}
+
+string File::Read()
+{
+    if(this->Open(ios::in))
+    {
+        string r;
+        string line;
+        while(this->file)
+        {
+            getline(this->file, line);
+            r = r + line + "\n";
+        }
+        this->Close();
+        return r;
+    }
+    else
+        return "Error";
+}
+
+bool File::Write(string to_file)
+{
+    if(this->Open(ios::out))
+    {
+        this->file << to_file << endl;
+        this->Close();
     }
 }

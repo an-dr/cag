@@ -5,9 +5,14 @@
 #include <iostream>
 #include "cag/cag.h"
 
+using namespace std;
 
 int main()
 {
-    std::cout<<"Test"<<std::endl;
+
+    string path = "config.ini";
+    File a(path);
+    a.Write("1234\n321\nqwerty");
+    cout<<a.Read()<<endl;
     return 0;
 }
