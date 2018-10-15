@@ -10,8 +10,9 @@
 
 /// \brief Constructor
 /// \param path
-File::File(string path):
-file_path(std::move(path))
+File::File(string path)
+        :
+        file_path(std::move(path))
 {
 
 }
@@ -44,14 +45,14 @@ bool File::Close()
 /// \return readed string
 string File::Read()
 {
-    if(this->Open(ios::in))
+    if (this->Open(ios::in))
     {
         string r; ///< result of reading
         string line; ///< readed line
-        while(this->file)
+        while (this->file)
         {
             getline(this->file, line);
-            r = r + line + "\n";
+            r = r+line+"\n";
         }
         this->Close();
         return r;
@@ -60,12 +61,11 @@ string File::Read()
         throw file_exc_nofile();
 }
 
-///
 /// \param to_file this string will written to a file instead of old content
 /// \return
 bool File::Write(string to_file)
 {
-    if(this->Open(ios::out))
+    if (this->Open(ios::out))
     {
         this->file << to_file << endl;
         this->Close();

@@ -8,4 +8,4 @@ add_executable(
         test main.cpp
         cag/src/file.cpp cag/inc/file.h
         cag/src/path.cpp cag/inc/path.h
-)
+        cag/src/line_tool.cpp cag/inc/line_tool.h)
