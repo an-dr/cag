@@ -4,9 +4,11 @@
 
 The library has a **File** class to simplify reading and writing with files
 
-- File::File(string path)
-- string File::Read()
-- bool File::Write(string to_file)
+`File::File(string path)`
+
+`string File::Read()`
+
+`bool File::Write(string to_file)`
 
 ## line_tool class
 
