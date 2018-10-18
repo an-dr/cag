@@ -17,6 +17,6 @@ int main()
     string output;
     input = R"(C:\windows\system32\\drivers/123)";
     Path p(input);
-    p.get_string(output);
+    cout << p;
     return 0;
 }
