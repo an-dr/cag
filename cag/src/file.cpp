@@ -6,7 +6,7 @@
 // Created by Andrey Gramakov on 09/10/2018.
 //
 
-#include "../inc/file.h"
+#include "file.h"
 
 /// \brief Constructor
 /// \param path

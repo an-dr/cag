@@ -2,7 +2,7 @@
 // Created by Andrey Gramakov on 10/12/2018.
 //
 
-#include "../inc/line_tool.h"
+#include "line_tool.h"
 
 ///
 /// \param in
