@@ -11,20 +11,21 @@
 #include <set>
 using namespace std;
 
-class strext: public string
+class Strext: public string
 {
 private:
     set<uint64_t> searched_pos; ///< Vector for dearch results
 
 public:
-    strext();
-    explicit strext(string in);
+    using string::operator=; // operator from base class
+    Strext();
+    explicit Strext(string in);
     void find_and_replace(string const& find, string const& replace);
     void ltrim(const char* t);
     void rtrim(const char* t);
     void trim(const char* t);
     void search_all(const string& to_find);
-    const set<uint64_t> & get_searched_pos();
+    set<uint64_t> & get_searched_pos();
 
 };
 

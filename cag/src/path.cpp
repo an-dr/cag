@@ -6,21 +6,19 @@
 
 /// @brief default constructor
 Path::Path()
-        :raw_path(""), synt_path("") { }
+        :path_str("") { }
 
 /// @brief A copy constructor
 /// \param other
 Path::Path(const Path& other)
 {
-    this->raw_path = other.raw_path;
-    this->synt_path = other.synt_path;
-    this->path_container = other.path_container;
+    this->path_str = other.path_str;
 }
 
 /// @brief Constructor
 /// \param path_str
 Path::Path(const string& path_str)
-        :raw_path(path_str)
+        :path_str(path_str)
 {
     pathstr_analysis();
     pathstr_synthesis();
@@ -28,24 +26,34 @@ Path::Path(const string& path_str)
 
 Path& Path::operator=(const Path& other)
 {
-    this->raw_path = other.raw_path;
-    this->synt_path = other.synt_path;
-    this->path_container = other.path_container;
+    this->assign(other.path_str);
     return *this;
+}
+
+
+Path& Path::operator=(const string& other)
+{
+    this->assign(other);
+    return *this;
+}
+
+void Path::assign(const string & new_val) {
+    path_str = new_val;
+    pathstr_analysis();
+    pathstr_synthesis();
 }
 
 /// @brief Disasemles raw_string to a vector
 /// \return
 bool Path::pathstr_analysis()
 {
-    set<uint64_t> find_positions;
-    string path_str = raw_path;
-    line_tool::find_and_replace(path_str, "\\\\", "\\");
-    line_tool::search_all(path_str, "\\", find_positions);
-    line_tool::search_all(path_str, "/", find_positions);
+    path_str.find_and_replace("\\\\", "\\");
+    path_str.find_and_replace("\\", "/");
+    path_str.rtrim("/");
+    path_str.search_all("/");
     uint64_t cur_start = 0;
     string path_part;
-    for (auto f_it : find_positions)
+    for (auto f_it : path_str.get_searched_pos())
     {
         path_part = path_str.substr(cur_start, (f_it-cur_start));
         path_container.push_back(path_part);
@@ -59,20 +67,22 @@ bool Path::pathstr_analysis()
 /// \return
 bool Path::pathstr_synthesis()
 {
-    synt_path.erase();
+    path_str.erase();
     for (const auto& path_part: path_container)
     {
-        synt_path += path_part+"/";
+        path_str += path_part+"/";
     }
+    path_str.rtrim("/");
+    path_container.clear();
     return true;
 }
 
-string Path::get_string() const
+Strext Path::get_string() const
 {
-    return synt_path;
+    return path_str;
 }
 
 ostream& operator<<(ostream& out, const Path& p)
 {
-    return (out << p.synt_path);
+    return (out << p.path_str);
 }

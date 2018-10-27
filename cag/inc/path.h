@@ -9,13 +9,14 @@
 #include <vector>
 #include <string>
 #include "line_tool.h"
+#include "Strext.h"
 
 class Path
 {
 private:
-    string raw_path;
-    string synt_path;
+    Strext path_str;
     vector<string> path_container;
+    void assign(const string & new_val);
     bool pathstr_analysis();
     bool pathstr_synthesis();
 
@@ -24,7 +25,8 @@ public:
     explicit Path(const string& path_str); // init constructor
     Path(const Path& other); // copy constructor
     Path& operator=(const Path& other);
-    string get_string() const;
+    Path& operator=(const string& other);
+    Strext get_string() const;
     // friends
     friend ostream& operator<<(ostream& out, const Path& p);
 };

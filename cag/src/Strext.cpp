@@ -2,19 +2,21 @@
 // Created by Andrey Gramakov on 27-Oct-18.
 //
 
+#include <Strext.h>
+
 #include "Strext.h"
 
-strext::strext()
+Strext::Strext()
 {
     cout << "epmty" << endl;
 }
 
-strext::strext(string in)
+Strext::Strext(string in)
         :string(std::move(in))
 {
 }
 
-void strext::find_and_replace(string const& find, string const& replace)
+void Strext::find_and_replace(string const& find, string const& replace)
 {
     for (string::size_type i = 0; (i = this->find(find, i))!=string::npos;)
     {
@@ -23,25 +25,25 @@ void strext::find_and_replace(string const& find, string const& replace)
     }
 }
 
-void strext::ltrim(const char* t = " \t\n\r\f\v")
+void Strext::ltrim(const char* t = " \t\n\r\f\v")
 {
     this->erase(0, this->find_first_not_of(t));
 }
 
 // trim from right
-void strext::rtrim(const char* t = " \t\n\r\f\v")
+void Strext::rtrim(const char* t = " \t\n\r\f\v")
 {
     this->erase(this->find_last_not_of(t)+1);
 }
 
 // trim from left & right
-void strext::trim(const char* t = " \t\n\r\f\v")
+void Strext::trim(const char* t = " \t\n\r\f\v")
 {
     this->erase(0, this->find_first_not_of(t));
     this->erase(this->find_last_not_of(t)+1);
 }
 
-void strext::search_all(const string& to_find)
+void Strext::search_all(const string& to_find)
 {
     searched_pos.clear();
     uint64_t l_cur = 0;
@@ -56,7 +58,7 @@ void strext::search_all(const string& to_find)
     }
 }
 
-const set<uint64_t>& strext::get_searched_pos()
+set<uint64_t>& Strext::get_searched_pos()
 {
     return searched_pos;
 }
