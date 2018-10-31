@@ -1,7 +1,3 @@
-#include <utility>
-
-#include <utility>
-
 //
 // Created by Andrey Gramakov on 09/10/2018.
 //
@@ -52,7 +48,7 @@ string File::Read()
         while (this->file)
         {
             getline(this->file, line);
-            r = r+line+"\n";
+            r += line+"\n";
         }
         this->Close();
         return r;
@@ -69,11 +65,14 @@ bool File::Write(string to_file)
     {
         this->file << to_file << endl;
         this->Close();
+        return true;
     }
+    return false;
 }
 
 /// \breaf an exception for a non-existing file
 /// \return
+
 const char* file_exc_nofile::what() const throw()
 {
     return "File is not exists";

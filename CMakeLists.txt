@@ -3,8 +3,8 @@ project(cag)
 
 set(CMAKE_CXX_STANDARD 11)
 
-file(GLOB CAG_SRCFILES cag/src/*.cpp)
 include_directories(cag/inc)
+file(GLOB CAG_SRCFILES cag/src/*.cpp)
 #target_sources(cag/src/file.cpp)
 #link_directories(cag/src)
 
