@@ -21,6 +21,12 @@ int main()
     lc.add("test3");
     lc.add("test4");
     lc.add("test5");
-    lc.print();
+    for(auto val: lc)
+    {
+        cout << val << endl;
+    }
+//    lc.print();
+
+//    cout << lc.get(2) << endl;
     return 0;
 }
