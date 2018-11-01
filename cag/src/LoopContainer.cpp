@@ -19,7 +19,7 @@ LoopContainer<T>::LoopContainer()
 
 template<class T>
 LoopContainer<T>::LoopContainer(int size)
-        : m_size(size), m_pos(0)
+        : m_size(size), m_cursor(0)
 {
 #   ifdef DEBUGOUT
     cout << "new" << endl;
@@ -40,8 +40,8 @@ LoopContainer<T>::~LoopContainer()
 template<class T>
 void LoopContainer<T>::add(T newone)
 {
-    m_looped[m_pos++] = newone;
-    if (m_pos==m_size) m_pos = 0;
+    m_looped[m_cursor++] = newone;
+    if (m_cursor==m_size) m_cursor = 0;
 }
 
 template<class T>
@@ -67,6 +67,58 @@ template<class T>
 auto LoopContainer<T>::end() -> LoopContainer<T>::iterator
 {
     return iterator(m_size, *this);
+}
+
+template<class T>
+void LoopContainer<T>::return_cursor()
+{  m_cursor = 0; }
+
+template<class T>
+void LoopContainer<T>::set_cursor(int new_pos)
+{ m_cursor = new_pos; }
+
+template<class T>
+void LoopContainer<T>::shift_r(int n_times)
+{
+    while(n_times)
+    {
+        rshift();
+        --n_times;
+    }
+}
+
+template<class T>
+void LoopContainer<T>::shift_l(int n_times)
+{
+    while(n_times)
+    {
+        lshift();
+        --n_times;
+    }
+}
+template<class T>
+void LoopContainer<T>::rshift()
+{
+    int pos_to_shift = m_size-1;
+    auto last = get(pos_to_shift);
+    while(pos_to_shift)
+    {
+        m_looped[pos_to_shift] = m_looped[pos_to_shift-1];
+        --pos_to_shift;
+    }
+    m_looped[pos_to_shift] = last;
+}
+template<class T>
+void LoopContainer<T>::lshift()
+{
+    int pos_to_shift = 0;
+    auto first = get(pos_to_shift);
+    while(pos_to_shift != (m_size-1))
+    {
+        m_looped[pos_to_shift] = m_looped[pos_to_shift+1];
+        ++pos_to_shift;
+    }
+    m_looped[pos_to_shift] = first;
 }
 
 template<class T>

@@ -15,18 +15,20 @@ using namespace std;
 int main()
 {
 
-    LoopContainer<string> lc(4);
-    lc.add("test1");
-    lc.add("test2");
-    lc.add("test3");
-    lc.add("test4");
-    lc.add("test5");
-    for(auto val: lc)
-    {
-        cout << val << endl;
-    }
-//    lc.print();
+    LoopContainer<string> lc(5);
+    lc.add("1");
+    lc.add("2");
+    lc.add("3");
+    lc.add("4");
+    lc.add("5");
+    lc.shift_r(2);
 
-//    cout << lc.get(2) << endl;
+    lc.print();
+
+
+    cout << endl;
+
+    lc.shift_l(1);
+    lc.print();
     return 0;
 }
