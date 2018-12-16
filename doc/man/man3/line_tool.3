@@ -1,0 +1,56 @@
+.TH "line_tool" 3 "Sun Dec 16 2018" "cag" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+line_tool
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBsplit_line\fP (string &in, string delim, pair< string, string > &out, unsigned long long int line_start=0)"
+.br
+.ti -1c
+.RI "static void \fBget_lines\fP (string &in, list< string > &out)"
+.br
+.ti -1c
+.RI "static void \fBsearch_all\fP (const string &str_in, const string &to_find, set< uint64_t > &result_pos)"
+.br
+.ti -1c
+.RI "static void \fBfind_and_replace\fP (string &source, string const &find, string const &replace)"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "void line_tool::get_lines (string & in, list< string > & out)\fC [static]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIin\fP 
+.br
+\fIout\fP 
+.RE
+.PP
+
+.SS "bool line_tool::split_line (string & in, string delim, pair< string, string > & out, unsigned long long int line_start = \fC0\fP)\fC [static]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIin\fP 
+.br
+\fIdelim\fP 
+.br
+\fIout\fP 
+.br
+\fIline_start\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for cag from the source code\&.
