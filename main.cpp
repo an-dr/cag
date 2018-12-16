@@ -4,31 +4,22 @@
 
 #include <iostream>
 #include <string>
-#include "line_tool.h"
-#include "path.h"
-#include "Strext.h"
-#include "LoopContainer.h"
 
+//#include "test_LoopContainer.h"
+#include "test_cagmath.h"
 
 using namespace std;
 
 int main()
 {
 
-    LoopContainer<string> lc(5);
-    lc.add("1");
-    lc.add("2");
-    lc.add("3");
-    lc.add("4");
-    lc.add("5");
-    lc.shift_r(2);
+#ifdef TEST_LOOPCOUNTER_H
+    test_LoopContainer();
+#endif
 
-    lc.print();
+#ifdef TEST_CAGMATH_H
+    test_cagmath();
+#endif
 
-
-    cout << endl;
-
-    lc.shift_l(1);
-    lc.print();
     return 0;
 }
